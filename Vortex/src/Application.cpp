@@ -1,4 +1,5 @@
 #include "Application.h"
+#include <iostream>
 
 namespace Vortex
 {
@@ -10,6 +11,8 @@ namespace Vortex
 	}
 	void Application::Run()
 	{
-		while (true);
+		while (true)
+		{
+		}
 	}
 }
