@@ -1,6 +1,5 @@
-#include "Application.h"
+#include "Vortex/Application.h"
 
-#include <iostream>
 
 extern Vortex::Application* Vortex::CreateApplication();
 

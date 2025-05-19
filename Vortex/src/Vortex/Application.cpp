@@ -1,12 +1,15 @@
 #include "Application.h"
-#include <iostream>
-#include <spdlog/spdlog.h>
+#include "Log.h"
+
 
 namespace Vortex
 {
 	Application::Application()
 	{
-		spdlog::info("Welcom to spdlog!");
+		Log::Init();
+		Vortex::KeyPressedEvent event(1, 10);
+		std::cout << event << std::endl;
+		VTX_TRACE("{}", event);
 	}
 	Application::~Application()
 	{
