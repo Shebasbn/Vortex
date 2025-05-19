@@ -1,6 +1,4 @@
-#include <iostream>
-
-#include "Vortex/Application.h"
+#include "Vortex.h"
 
 	
 class SandboxApp : public Vortex::Application

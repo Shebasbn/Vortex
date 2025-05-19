@@ -1,13 +1,12 @@
-#include "Application.h"
-
+#pragma once
+#ifdef VTX_WINDOWS_PLATFORM
 extern Vortex::Application* Vortex::CreateApplication();
 
-int main()
+int main(int argc, char** argv)
 {
 	Vortex::Log::Init();
 	auto App = Vortex::CreateApplication();
-	std::cout << "Hello Core\n";
 	App->Run();
 	delete App;
-	return 0;
 }
+#endif
