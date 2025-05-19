@@ -26,7 +26,7 @@ namespace Vortex
 		virtual std::string ToString() const override
 		{ 
 			std::stringstream ss;
-			ss << m_KeyCode << " (" << m_RepeatCount << " times).";
+			ss << "(KeyCode): " << m_KeyCode << " (" << m_RepeatCount << " times).";
 			return ss.str();
 		}
 
@@ -44,7 +44,7 @@ namespace Vortex
 		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << m_KeyCode;
+			ss << "(KeyCode): " << m_KeyCode;
 			return ss.str();
 		}
 
@@ -61,7 +61,7 @@ namespace Vortex
 		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << m_KeyCode;
+			ss << "(KeyCode): " << m_KeyCode;
 			return ss.str();
 		}
 

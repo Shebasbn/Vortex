@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Vortex/Core.h"
+#include <chrono>
+#include <functional>
 
 namespace Vortex
 {
@@ -79,21 +81,3 @@ namespace Vortex
 }
 
 #include <spdlog/fmt/ostr.h>
-
-//namespace fmt {
-//	template <>
-//	struct formatter<Vortex::Event> : formatter<std::string>
-//	{
-//		// Inherit parse() from formatter<std::string>
-//		template <typename FormatContext>
-//		auto format(const Vortex::Event& e, FormatContext& ctx)
-//		{
-//			auto time = std::chrono::duration_cast<std::chrono::milliseconds>(
-//				e.GetTimestamp().time_since_epoch()
-//			).count();
-//
-//			return fmt::format_to(ctx.out(), "[{} | ID: {} | Time: {}] {}",
-//				e.GetName(), e.GetID(), time, e.ToString());
-//		}
-//	};
-//}

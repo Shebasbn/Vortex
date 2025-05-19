@@ -14,6 +14,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#ifdef VRT_PLATFORM_WINDOWS
-#include <Windows.h>
+#include "Vortex/Log.h"
+
+#ifdef VTX_WINDOWS_PLATFORM
+	#include <Windows.h>
 #endif

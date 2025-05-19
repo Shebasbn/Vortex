@@ -38,7 +38,14 @@ target_compile_definitions(Vortex PRIVATE
 )
 
 if (WIN32)
-target_compile_definitions(Vortex PRIVATE VTX_WINDOWS_PLATFORM)
+    target_compile_definitions(Vortex PRIVATE VTX_WINDOWS_PLATFORM)
+    message(STATUS "Windows platform")
+elseif (APPLE)
+    target_compile_definitions(Vortex PRIVATE VTX_APPLE_PLATFORM)
+    message(STATUS "Apple platform")
+elseif (UNIX)
+    target_compile_definitions(Vortex PRIVATE VTX_UNIX_PLATFORM)
+    message(STATUS "Unix/Linux platform")
 endif()
 
 target_compile_definitions("${CMAKE_PROJECT_NAME}" PUBLIC ${CMAKE_PROJECT_NAME}_PATH="${CMAKE_CURRENT_SOURCE_DIR}/Vortex/") 
@@ -51,7 +58,11 @@ target_include_directories(Vortex
         ${CMAKE_CURRENT_SOURCE_DIR}/Vortex/src
         ${CMAKE_CURRENT_SOURCE_DIR}/Vortex/vendor/spdlog/include
 )
-target_link_libraries("Vortex" "spdlog")
+target_link_libraries("Vortex"
+    spdlog
+    d3d11
+    dxgi
+)
 
 
 

@@ -1,8 +1,20 @@
 #pragma once
 #include "Event.h"
 #include "KeyEvent.h"
+#include "MouseEvent.h"
+#include "ApplicationEvent.h"
 #include <spdlog/fmt/fmt.h>
 
+#define VORTEX_FMT_EVENT_DERIVED(DerivedType)        \
+static_assert(std::is_base_of<Vortex::Event, Vortex::DerivedType>::value, #DerivedType " must derive from Vortex::Event");\
+template <>                                          \
+struct fmt::formatter<Vortex::DerivedType>           \
+    : fmt::formatter<Vortex::Event> {                \
+    template <typename FormatContext>                \
+    auto format(const Vortex::DerivedType& e, FormatContext& ctx) const { \
+        return fmt::formatter<Vortex::Event>::format(e, ctx);             \
+    }                                                                  \
+};
 
 template <>
 struct fmt::formatter<Vortex::Event> {
@@ -19,11 +31,21 @@ struct fmt::formatter<Vortex::Event> {
     }
 };
 
-// Optional: format derived types explicitly if needed
-template <>
-struct fmt::formatter<Vortex::KeyPressedEvent> : fmt::formatter<Vortex::Event> {
-    template <typename FormatContext>
-    auto format(const Vortex::KeyPressedEvent& e, FormatContext& ctx) const {
-        return fmt::formatter<Vortex::Event>::format(e, ctx);
-    }
-};
+// Key Events
+VORTEX_FMT_EVENT_DERIVED(KeyPressedEvent)
+VORTEX_FMT_EVENT_DERIVED(KeyReleasedEvent)
+VORTEX_FMT_EVENT_DERIVED(KeyTypedEvent)
+
+// Mouse Events
+VORTEX_FMT_EVENT_DERIVED(MouseMovedEvent)
+VORTEX_FMT_EVENT_DERIVED(MouseScrolledEvent)
+VORTEX_FMT_EVENT_DERIVED(MouseButtonPressedEvent)
+VORTEX_FMT_EVENT_DERIVED(MouseButtonReleasedEvent)
+
+// Application Events
+VORTEX_FMT_EVENT_DERIVED(WindowResizeEvent)
+VORTEX_FMT_EVENT_DERIVED(WindowCloseEvent)
+VORTEX_FMT_EVENT_DERIVED(AppTickEvent)
+VORTEX_FMT_EVENT_DERIVED(AppUpdateEvent)
+VORTEX_FMT_EVENT_DERIVED(AppRenderEvent)
+
